@@ -2,7 +2,7 @@ import dash
 from dash import html, dcc, callback, Input, Output
 import plotly.express as px
 import plotly.graph_objects as go
-
+from flask import Flask
 # Sample JSON data with industry information and cars
 data = [
     {
@@ -161,8 +161,8 @@ data = [
 
 
 # Initialize Dash app
-app = dash.Dash(__name__)
-server = app.server
+server = Flask(__name__)
+app = dash.Dash(__name__, server=server)
 
 # Layout
 app.layout = html.Div([
